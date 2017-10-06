@@ -16,7 +16,7 @@ module RailsRinku
     Rinku.auto_link(
       text,
       options[:link],
-      tag_options(options[:html]),
+      (respond_to?(:tag_options) ? self : tag_builder).tag_options(options[:html]),
       options[:skip],
       &block
     ).html_safe
